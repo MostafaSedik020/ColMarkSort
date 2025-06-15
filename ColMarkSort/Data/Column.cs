@@ -10,10 +10,17 @@ namespace ColMarkSort.Data
     {
         public double Width { get; set; }
         public double Length { get; set; }
+        public string Mark { get; set; }
+        public int MarkNumber { get; set; } 
+        public string ColumnMark => $"{Mark}{MarkNumber}"; // Concatenates Mark and MarkNumber to form the ColumnMark
+        public double ID { get; set; }
         public string BaseLevel { get; set; }
         public string TopLevel { get; set; }
-        public double RebarDia { get; set; }
-        public double BarsNumber { get; set; }
+        public int RebarDia { get; set; }
+        public int BarsNumber { get; set; }
+        public double Volume { get; set; }
+
+
 
 
 

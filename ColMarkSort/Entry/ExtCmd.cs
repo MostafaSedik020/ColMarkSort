@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
+using ColMarkSort.Data;
 
 namespace ColMarkSort.Entry
 {
@@ -25,6 +26,7 @@ namespace ColMarkSort.Entry
             //MainWindow mainWindow = new MainWindow(Doc);
             //mainWindow.ShowDialog();
             //mainWindow.Show();
+            ManageData.GetColumnData(Doc);
 
             return Result.Succeeded;
         }
