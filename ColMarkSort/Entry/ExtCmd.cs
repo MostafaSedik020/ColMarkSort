@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using ColMarkSort.Data;
+using ColMarkSort.UI;
 
 namespace ColMarkSort.Entry
 {
@@ -23,10 +25,17 @@ namespace ColMarkSort.Entry
             //ExtEventHan = new ExtEventHan();
             //ExtEvent = ExternalEvent.Create(ExtEventHan);
 
-            //MainWindow mainWindow = new MainWindow(Doc);
-            //mainWindow.ShowDialog();
+            FilteredElementCollector collector = new FilteredElementCollector(Doc);
+            var levels = collector.OfClass(typeof(Level))
+                                  .Cast<Level>()
+                                  .OrderBy(level => level.Elevation)
+                                  .Select(level => level.Name)
+                                  .ToArray();
+
+            MainWindow mainWindow = new MainWindow(Doc,levels);
+            mainWindow.ShowDialog();
             //mainWindow.Show();
-            ManageData.GetColumnData(Doc);
+            
 
             return Result.Succeeded;
         }

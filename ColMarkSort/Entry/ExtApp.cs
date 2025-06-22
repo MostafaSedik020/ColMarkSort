@@ -54,13 +54,13 @@ namespace ColMarkSort.Entry
                 string assemblyPath = assembly.Location;
 
                 // Create push button data
-                PushButtonData pbData = new PushButtonData("ColSort_btn", "ColSorting", assemblyPath, typeof(ExtCmd).FullName);
+                PushButtonData pbData = new PushButtonData("ColSort_btn", "Column Sorting", assemblyPath, typeof(ExtCmd).FullName);
 
                 // Add the push button to the panel
                 PushButton pb = panel.AddItem(pbData) as PushButton;
-                pb.ToolTip = "Assgin Beam Mark and RFT from ETABS to Revit";
+                pb.ToolTip = "Rearrange Column Mark";
                 
-                pb.LargeImage = GetImageSource("BeamDesgin.Resources.PM24.png"); //change the image name 
+                pb.LargeImage = GetImageSource("ColMarkSort.Resources.sort-24.png"); 
             }
         }
         private ImageSource GetImageSource(string imageFullName)

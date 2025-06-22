@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<RevitAddIns>
+	<AddIn Type="Application">
+		<Name>Column Mark Sorting</Name>
+		<Assembly>"E:\Development\ColMarkSort\ColMarkSort\bin\Debug\ColMarkSort.dll"</Assembly>
+		<AddInId>A3C1FE46-623E-44AD-B157-52255D451E76</AddInId>
+		<FullClassName>ColMarkSort.Entry.ExtApp</FullClassName>
+		<VendorId>ADSK</VendorId>
+		<VendorDescription>Mostafa</VendorDescription>
+		<Text>sort column and add column mark</Text>
+	</AddIn>
+</RevitAddIns>

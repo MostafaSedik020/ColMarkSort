@@ -10,9 +10,9 @@ namespace ColMarkSort.Data
     {
         //this clas contains group of columns share the same mark and postion
         public List<Column> ColumnList { get; set; }
-        public string Label { get; set; }
+        public string MarkLabel { get; set; }
         public int MarkNumber { get; set; }
-        public string ColumnMark => $"{Label}{MarkNumber}";
+        public string ColumnMark => $"{MarkLabel}{MarkNumber}";
 
         public ColumnArray()
         {
