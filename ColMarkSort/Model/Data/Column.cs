@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ColMarkSort.Data
+namespace ColMarkSort.Model.Data
 {
     public class Column
     {
@@ -16,9 +16,24 @@ namespace ColMarkSort.Data
         public double ID { get; set; }
         public string BaseLevel { get; set; }
         public string TopLevel { get; set; }
-        public int RebarDia { get; set; }
+        public double RebarDia { get; set; }
         public int BarsNumber { get; set; }
         public double Volume { get; set; }
+        public bool IsRectangle { get; set; } = false;
+        public bool IsCircular { get; set; } = false;
+
+        //Etabs prop only
+        public string EtabsName { get; set; }
+        public string UniqueName { get; set; }
+        public double point1X { get; set; }
+        public double point1Y { get; set; }
+        public double point1Z { get; set; }
+        public double point2X { get; set; }
+        public double point2Y { get; set; }
+        public double point2Z { get; set; }
+        public double Angle { get; set; }
+        public string EtabsStory { get; set; }
+        public Rft Rebar { get; set; }
 
         public bool IsSimilar(Column other)
         {

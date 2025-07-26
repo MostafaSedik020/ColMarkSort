@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Documents;
 using Autodesk.Revit.DB;
-using ColMarkSort.Utils;
+using ColMarkSort.Model.Utils;
 
-namespace ColMarkSort.Data
+namespace ColMarkSort.Model.Data
 {
     public  class ColumnArrayGroup
     {
@@ -43,14 +45,64 @@ namespace ColMarkSort.Data
             int plantedColumn = 0;
             for (int i = 0; i < ColumnsArrays.Count; i++)
             {
-                
+                if(ColumnsArrays[i].ColumnList.FirstOrDefault().MarkLabel == "C7")
+                {
+                    MessageBox.Show("C7 found in ColumnArrayGroup.SortArrays");
+                }
+                //if (i == 4) // idk what this is for, but it seems like a debug line
+                //{
+                //    var oldList = ColumnsArrays[i].ColumnList;
+                //    var newList = ColumnsArrays[i].ColumnList.GroupBy(c => new
+                //    {
+                //        c.Width,
+                //        c.Length,
+                //        c.BaseLevel,
+                //        c.TopLevel,
+                //        c.RebarDia,
+                //        c.BarsNumber
+                //    })
+                //    .Select(g => g.First())
+                //    .ToList();
+                //}
+
                 if (ColumnsArrays[i].ColumnList.FirstOrDefault().BaseLevel == foundationLevel)
                 {
-                    if ( i != 0 && !MultiUtils.AreListsSimilar(ColumnsArrays[i].ColumnList, ColumnsArrays[i - 1].ColumnList) )
+                    var previousList = new List<Column>(); // Initialize to an empty list for the first iteration
+                    var currentList = ColumnsArrays[i].ColumnList.GroupBy(c => new
+                    {
+                        c.Width,
+                        c.Length,
+                        c.BaseLevel,
+                        c.TopLevel,
+                        c.RebarDia,
+                        c.BarsNumber
+                    })
+                    .Select(g => g.First())
+                    .ToList();
+
+                    if( i != 0)
+                    {
+                         previousList = ColumnsArrays[i-1].ColumnList.GroupBy(c => new
+                        {
+                            c.Width,
+                            c.Length,
+                            c.BaseLevel,
+                            c.TopLevel,
+                            c.RebarDia,
+                            c.BarsNumber
+                        })
+                         .Select(g => g.First())
+                         .ToList();
+                    }
+                    
+
+                    
+                    if ( i != 0 && !MultiUtils.AreListsSimilar(currentList, previousList) )
                     {
                         mainColumn++; // Increment the main column number for the next ColumnArray
 
                     }
+
                     ColumnsArrays[i].MarkNumber = mainColumn; // Start numbering from 1
                     ColumnsArrays[i].MarkLabel = "C"; // Set the label for each ColumnArray
                     foreach (var column in ColumnsArrays[i].ColumnList)

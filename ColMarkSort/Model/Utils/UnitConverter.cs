@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ColMarkSort.Utils
+namespace ColMarkSort.Model.Utils
 {
     public static class UnitConverter
     {
@@ -29,6 +29,11 @@ namespace ColMarkSort.Utils
         {
             double convertedNum = UnitUtils.ConvertFromInternalUnits((double)value, UnitTypeId.Meters);//REVIT2021++
             //double convertedNum = UnitUtils.ConvertFromInternalUnits((double)value, DisplayUnitType.DUT_METERS);
+            return convertedNum;
+        }
+        public static double convertMiliMetersToFeet(double value)
+        {
+            double convertedNum = value / 304.8; // Convert millimeters to feet (1 foot = 304.8 mm)
             return convertedNum;
         }
     }

@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Autodesk.Revit.DB;
-using ColMarkSort.Utils;
-using ColMarkSort.Revit;
+using ColMarkSort.Model.Utils;
+using ColMarkSort.Model.Revit;
 
-namespace ColMarkSort.Data
+namespace ColMarkSort.Model.Data
 {
     public static class ManageData
     {

@@ -1,5 +1,7 @@
 ﻿using Autodesk.Revit.DB;
-using ColMarkSort.Data;
+using ColMarkSort.Model.Data;
+using ColMarkSort.Model.Etabs;
+using ColMarkSort.Model.Revit;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +17,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ColMarkSort.UI
+namespace ColMarkSort.View.UI
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -31,9 +33,18 @@ namespace ColMarkSort.UI
             this.DataContext = options;
         }
 
-        private void OKButton_Click(object sender, RoutedEventArgs e)
+        private void OldColumns_Click(object sender, RoutedEventArgs e)
         {
             ManageData.GetColumnData(doc,OptionsComboBox.SelectedItem as string);
+        }
+
+        private void EtabsColumns_Click(object sender, RoutedEventArgs e)
+        {
+            ManageEtabs.LinkEtabsModel();
+            ColumnArrayGroup etabsColumns = ManageEtabs.GetDataFromEtabs();
+            RvtUtils.SendEtabsDataToRevit(doc, etabsColumns);
+            ManageData.GetColumnData(doc, OptionsComboBox.SelectedItem as string);
+
         }
     }
 }

@@ -1,11 +1,11 @@
-﻿using ColMarkSort.Data;
+﻿using ColMarkSort.Model.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ColMarkSort.Utils
+namespace ColMarkSort.Model.Utils
 {
     public static class MultiUtils
     {
@@ -21,6 +21,18 @@ namespace ColMarkSort.Utils
             }
 
             return true;
+        }
+        public static double NormalizeAngleTo90(double angle)
+        {
+            // Reduce the angle modulo 360 to get its equivalent within [0, 360]
+            double modAngle = angle % 360;
+            if (modAngle < 0)
+            {
+                modAngle += 360; // Ensure positive angles
+            }
+
+            // Map the angle to [0, 90] using symmetry
+            return modAngle % 90;
         }
     }
 }

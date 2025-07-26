@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ColMarkSort.Data
+namespace ColMarkSort.Model.Data
 {
     public class ColumnArray
     {

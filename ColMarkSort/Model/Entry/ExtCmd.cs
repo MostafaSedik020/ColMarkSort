@@ -7,10 +7,10 @@ using System.Windows.Controls;
 using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
-using ColMarkSort.Data;
-using ColMarkSort.UI;
+using ColMarkSort.Model.Data;
+using ColMarkSort.View.UI;
 
-namespace ColMarkSort.Entry
+namespace ColMarkSort.Model.Entry
 {
     [Transaction(TransactionMode.Manual)]
     public class ExtCmd : IExternalCommand

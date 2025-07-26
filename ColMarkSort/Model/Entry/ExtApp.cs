@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
 using System.Windows.Media;
 
-namespace ColMarkSort.Entry
+namespace ColMarkSort.Model.Entry
 {
     public class ExtApp : IExternalApplication
     {
