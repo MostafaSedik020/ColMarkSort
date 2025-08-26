@@ -11,7 +11,7 @@ namespace ColMarkSort.Model.Data
 {
     public static class ManageData
     {
-        public static void GetColumnData(Document doc , string foundationLevel)
+        public static void SortColumnData(Document doc , string foundationLevel)
         {
             var columnArrayGroup = new ColumnArrayGroup();
             // Here you would typically query the document for column elements,
@@ -82,7 +82,7 @@ namespace ColMarkSort.Model.Data
 
                 if (existingArray != null)
                 {
-                    // If it exists, add the column to the column array grroup
+                    // If it exists, add the column to the column array group
 
                     
                     columnArrayGroup.ColumnsArrays.Where(ca => ca.ColumnMark == column.ColumnMark).FirstOrDefault().ColumnList.Add(column);
@@ -103,10 +103,7 @@ namespace ColMarkSort.Model.Data
                 }
  
             }
-            foreach (var columnArray in columnArrayGroup.ColumnsArrays)
-            {
-
-            }
+            
 
             columnArrayGroup.SortArrays(levels,foundationLevel); // sort the arrays and assign MarkNumbers
             

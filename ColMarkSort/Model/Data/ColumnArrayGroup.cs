@@ -45,26 +45,8 @@ namespace ColMarkSort.Model.Data
             int plantedColumn = 0;
             for (int i = 0; i < ColumnsArrays.Count; i++)
             {
-                if(ColumnsArrays[i].ColumnList.FirstOrDefault().MarkLabel == "C7")
-                {
-                    MessageBox.Show("C7 found in ColumnArrayGroup.SortArrays");
-                }
-                //if (i == 4) // idk what this is for, but it seems like a debug line
-                //{
-                //    var oldList = ColumnsArrays[i].ColumnList;
-                //    var newList = ColumnsArrays[i].ColumnList.GroupBy(c => new
-                //    {
-                //        c.Width,
-                //        c.Length,
-                //        c.BaseLevel,
-                //        c.TopLevel,
-                //        c.RebarDia,
-                //        c.BarsNumber
-                //    })
-                //    .Select(g => g.First())
-                //    .ToList();
-                //}
-
+                
+   
                 if (ColumnsArrays[i].ColumnList.FirstOrDefault().BaseLevel == foundationLevel)
                 {
                     var previousList = new List<Column>(); // Initialize to an empty list for the first iteration

@@ -35,7 +35,7 @@ namespace ColMarkSort.View.UI
 
         private void OldColumns_Click(object sender, RoutedEventArgs e)
         {
-            ManageData.GetColumnData(doc,OptionsComboBox.SelectedItem as string);
+            ManageData.SortColumnData(doc,OptionsComboBox.SelectedItem as string);
         }
 
         private void EtabsColumns_Click(object sender, RoutedEventArgs e)
@@ -43,7 +43,8 @@ namespace ColMarkSort.View.UI
             ManageEtabs.LinkEtabsModel();
             ColumnArrayGroup etabsColumns = ManageEtabs.GetDataFromEtabs();
             RvtUtils.SendEtabsDataToRevit(doc, etabsColumns);
-            ManageData.GetColumnData(doc, OptionsComboBox.SelectedItem as string);
+            RvtUtils.ZerosToColumnMark(doc);
+            //ManageData.SortColumnData(doc, OptionsComboBox.SelectedItem as string);
 
         }
     }

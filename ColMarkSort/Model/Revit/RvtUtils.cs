@@ -165,5 +165,33 @@ namespace ColMarkSort.Model.Revit
                 revitColumn.ChangeTypeId(chosenType.Id);//change the column type to the new one
             }
         }
+        /// <summary>
+        /// add zero at the start of the column mark to keep formation of columns in case of model was in parts
+        public static void ZerosToColumnMark(Document doc)
+        {
+            FilteredElementCollector collectorCol = new FilteredElementCollector(doc);
+
+            var columns = collectorCol.OfCategory(BuiltInCategory.OST_StructuralColumns)
+                                 .WhereElementIsNotElementType()
+                                 .ToElements()
+                                 .ToList();
+            using (Transaction trn = new Transaction(doc, "Add Zeros"))
+            {
+                trn.Start();
+                foreach (var column in columns)
+                {
+                    string columnMark = column.LookupParameter("COLUMN MARK").AsString();
+
+                    // Add a zero at the start of the column mark
+                    column.LookupParameter("COLUMN MARK").Set("00" + columnMark);
+                    
+                }
+                
+                trn.Commit();
+            }
+
+            
+            
+        }
     }
 }
